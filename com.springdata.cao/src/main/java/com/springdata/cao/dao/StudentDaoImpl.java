@@ -24,14 +24,10 @@ public class StudentDaoImpl implements StudentDao {
 			 
 			 Student student = null;
 			 while (resultSet.next()) {
-				 int id = resultSet.getInt("id");
-				 String name = resultSet.getString("name");
-				 int age = resultSet.getInt("age");
-				 
 				 student = new Student();
-				 student.setId(id);
-				 student.setName(name);
-				 student.setAge(age);
+				 student.setId(resultSet.getInt("id"));
+				 student.setName(resultSet.getString("name"));
+				 student.setAge(resultSet.getInt("age"));
 				 
 				 students.add(student);
 			 }

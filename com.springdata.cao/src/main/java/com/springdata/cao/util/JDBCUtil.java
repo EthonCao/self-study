@@ -20,7 +20,7 @@ public class JDBCUtil {
      */
     public static Connection getConnection() throws Exception {
 
-        InputStream inputStream = JDBCUtilTest.class.getClassLoader().getResourceAsStream("db.properties");
+        InputStream inputStream = JDBCUtil.class.getClassLoader().getResourceAsStream("db.properties");
         Properties properties = new Properties();
         properties.load(inputStream);
 
