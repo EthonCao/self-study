@@ -126,4 +126,11 @@ public class EmployeeRepositoryTest {
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		Assert.assertNotNull(employees);
 	}
+	
+	@Test
+	public void testGetCount() {
+		long count = employeeRepository.getCount();
+		System.out.print("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		System.out.println("count: " + count);
+	}
 }

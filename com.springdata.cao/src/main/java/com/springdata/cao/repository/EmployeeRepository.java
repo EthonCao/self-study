@@ -55,6 +55,10 @@ public interface EmployeeRepository extends Repository<Employee, Integer>{
 	@Query("select e from Employee e where e.name like %:name%")
 	public List<Employee> findEmployeeByNameLike2(@Param("name") String name);
 	
-	
+	/**
+	 * 使用原生sql查询
+	 * */
+	@Query(nativeQuery=true, value="select cunt(1) from employee")
+	public long getCount();
 	
 }
