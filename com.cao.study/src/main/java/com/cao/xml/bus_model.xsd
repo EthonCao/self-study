@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="model">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="name"/>
+        <xs:element ref="description"/>
+        <xs:element ref="businessType"/>
+        <xs:element ref="inputDataSource"/>
+        <xs:element ref="business"/>
+        <xs:element ref="outputDataSource"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="name" type="xs:string" />
+  <xs:element name="description" type="xs:string" />
+  <xs:element name="businessType" type="xs:string" />
+  <xs:element name="inputDataSource">
+    <xs:complexType>
+      <xs:attribute name="dataType" use="required" type="xs:string"/>
+      <xs:attribute name="dataUrl" use="required"/>
+      <xs:attribute name="id" use="required" type="xs:string"/>
+      <xs:attribute name="type" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="business">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entitys"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entitys">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="entity"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="attributes"/>
+        <xs:element ref="filterGroups"/>
+      </xs:sequence>
+      <xs:attribute name="lable" use="required" type="xs:string"/>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="source" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="attribute"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="attribute">
+    <xs:complexType>
+      <xs:attribute name="lable" use="required" type="xs:string"/>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="sourceField" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filterGroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="filterGroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filterGroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="filters"/>
+      </xs:sequence>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="r" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filters">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="filter"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filter">
+    <xs:complexType>
+      <xs:attribute name="ct" use="required" type="xs:string"/>
+      <xs:attribute name="name" use="required" type="xs:string"/>
+      <xs:attribute name="source" use="required" type="xs:string"/>
+      <xs:attribute name="target" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="outputDataSource">
+    <xs:complexType>
+      <xs:attribute name="dataType" use="required" type="xs:string"/>
+      <xs:attribute name="dataUrl" use="required"/>
+      <xs:attribute name="id" use="required" type="xs:string"/>
+      <xs:attribute name="type" use="required" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

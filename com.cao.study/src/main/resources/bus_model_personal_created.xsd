@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd= "http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.example.org/test/"
+	targetNamespace="http://www.example.org/test/"
+	elementFormDefault="qualified">
+
+	<xsd:complexType name="business">
+		<xsd:sequence>
+			<xsd:element name="entitys" type="tns:entitys" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="entitys">
+		<xsd:sequence>
+			<xsd:element name="entity" type="tns:entity" minOccurs="1" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="attributes">
+		<xsd:sequence>
+			<xsd:element name="attribute" type="tns:attribute" minOccurs="1" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+
+	</xsd:complexType>
+
+	<xsd:complexType name="attribute">
+		<xsd:attribute name="sourceField" type="string"></xsd:attribute>
+		<xsd:attribute name="name" type="string"></xsd:attribute>
+		<xsd:attribute name="lable" type="string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="filter">
+		<xsd:attribute name="name" type="string"></xsd:attribute>
+		<xsd:attribute name="source" type="string"></xsd:attribute>
+		<xsd:attribute name="ct" type="string"></xsd:attribute>
+		<xsd:attribute name="target" type="string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="filters">
+		<xsd:sequence>
+			<xsd:element name="filter" type="tns:filter" minOccurs="1" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="filterGroup">
+		<xsd:sequence>
+			<xsd:element name="filters" type="tns:filters" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="string"></xsd:attribute>
+		<xsd:attribute name="r" type="string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:attributeGroup name="NewAttributeGroup"></xsd:attributeGroup>
+
+	<xsd:complexType name="filterGroups">
+		<xsd:sequence>
+			<xsd:element name="filterGroup" type="tns:filterGroup" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="entity">
+		<xsd:sequence>
+			<xsd:element name="attributes" type="tns:attributes" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+			<xsd:element name="filterGroups" type="tns:filterGroups" minOccurs="1" maxOccurs="1">
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="source" type="string"></xsd:attribute>
+		<xsd:attribute name="name" type="string"></xsd:attribute>
+		<xsd:attribute name="lable" type="string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="inputDataSource">
+		<xsd:attribute name="id" type="string"></xsd:attribute>
+		<xsd:attribute name="type" type="string"></xsd:attribute>
+		<xsd:attribute name="NewAttribute" type="string"></xsd:attribute>
+		<xsd:attribute name="dataUrl" type="string"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="outputDataSource">
+		<xsd:attribute name="id" type="string"></xsd:attribute>
+		<xsd:attribute name="NewAttribute" type="string"></xsd:attribute>
+		<xsd:attribute name="dataType" type="string"></xsd:attribute>
+		<xsd:attribute name="dataUrl" type="string"></xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="model">
+
+		<xsd:sequence>
+			<xsd:element name="name" type="string"></xsd:element>
+			<xsd:element name="description" type="string"></xsd:element>
+			<xsd:element name="businessType" type="string"></xsd:element>
+
+			<xsd:element name="inputDataSource" type="tns:inputDataSource"></xsd:element>
+			<xsd:element name="business" type="tns:business"></xsd:element>
+			<xsd:element name="outputDataSource" type="tns:outputDataSource"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:element name="model" type="tns:model"></xsd:element>
+	
+</xsd:schema>
